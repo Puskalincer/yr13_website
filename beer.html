@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bg{
+            background-image: url(BEER.png);
+    background-position: center center;
+    background-repeat: repeat;
+    background-size: 4em;
+    width: 300vw;
+    height: 300vh;
+    transform: rotate(23deg);
+    left: -25em;
+    position: absolute;
+    animation: example 10s infinite;
+    animation-timing-function: linear;
+        }
+
+
+
+@keyframes example {
+    0% {
+        left: -50em;
+    }
+    100% {
+        left: -20em;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="bg" ></div>
+</body>
+</html>
