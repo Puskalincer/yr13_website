@@ -246,7 +246,7 @@
 			var glass1 = document.getElementById("glass");
 			const glass = glass1.value;
 
-			var answer = ((abv*qty)/glass,2);
+			var answer = (abv*qty)/glass;
 
 			document.getElementById("output").innerHTML = 'Your drink will be '+answer+'%';
 
@@ -269,11 +269,65 @@
 			<h1>BREWING CALCULATIONS</h1>
 			Please find below some brewing calculations / conversions for your convieniance, use them at your own risk
 		</div>
+
+
+
+
+
+		<form onsubmit="return false">
+			<div class="container" style="padding: 20px;background-color: #0E141B;border-radius: 5px;box-shadow: 0px 0px 4px 1px rgb(0 0 0 / 67%);text-align: left;" >
+				<div id="text_magic" >
+					<div style="display: flex;justify-content: space-between;align-items: center;padding: 0;background: #0E141B;position: relative;    z-index: 2;" >
+						<h1 style="margin: 0;" >Mixer Percetage</h1>
+						<div id="info_toggle" style="padding: 0;" >
+							<input type="checkbox">
+							<img class="arrow" style="position: relative;width: 35px;" src="arrow_drop_down.svg" >
+						</div>
+					</div>
+					<div class="text_container" style="padding: 0;text-align: left;position: relative;" >
+						<p>Calculations to show what percentage your drink will be after adding spirit. select the percentage spirit, amount added and the cup size.Please not this will not be 100% correct but will give a batter Idea.</p>
+					</div>
+				</div>			
+				<div style="text-align: left;" >
+					<label class="nice_font" for="abv">Spirit Percentage (ABV)</label>
+					<div style="background-color: transparent;padding: 0;margin-top: 5px;display: flex;gap: 2%;" >
+						<input style="width: 100%;" class="stylized_input" type="text" id="abv" name="abv" placeholder="Enter Value">
+					</div>
+				</div>
+				<div style="text-align: left;" >
+					<label class="nice_font" for="qty">Spirit ammount (mls)</label>
+					<div style="background-color: transparent;padding: 0;margin-top: 5px;display: flex;gap: 2%;" >
+						<input style="width: 100%;" class="stylized_input" type="text" id="qty" name="qty" placeholder="Enter Value">
+					</div>
+				</div>
+				<div style="text-align: left;" >
+					<label class="nice_font" for="glass">Drink / Glass size (mls)</label>
+					<div style="background-color: transparent;padding: 0;margin-top: 5px;display: flex;gap: 2%;" >
+						<input style="width: 100%;" class="stylized_input" type="text" id="glass" name="glass" placeholder="Enter Value">
+						<input style="margin-left: 0;" class="stylized_button"  onclick="Mixer()" type="submit" id="btn1" value="calculate">
+					</div>
+				</div>
+	
+				<div style="padding: 20px;" >
+					<p class="nice_font" style="margin: 0;margin-bottom: 5px;" >Result</p>
+					<div style="  display: flex;
+					justify-content: space-between;
+					padding: 20px;
+					border: 1px solid #262c33;
+					border-radius: 4px;" >
+						<p style="margin: 0;"   id='output'> </p>
+					</div>
+				</div>
+	
+			</div>
+			</form>
+	
+
 		
+			
 
-
-		<!----   What Percentage is my Mixer   ---->
-		<form onsubmit="return false"> <!-- <<-- This will stop it redirecting the page, but able to run the code-->
+		<!----   What Percentage is my Mixer   
+		<form onsubmit="return false">
 			<div class="nestedthree">
 				<div class="span3">
 					<h2>What Percentage is my Mixer</h2> Calculations to show what percentage your drink will be after adding spirit.<br>
@@ -300,7 +354,7 @@
 			</div>
 
 		</form>
-		<!----   xyz Section   ---->
+		   xyz Section   ---->
 
 
 
@@ -341,41 +395,36 @@
 			</div>
 			<div style="text-align: left;" >
 				<label class="nice_font" for="user_value">Calculated value</label>
-				<div style="background-color: transparent;padding: 0;margin-top: 5px;" >
-					<input style="width: 70%;" class="stylized_input" type="text" id="user_value" name="user_value" placeholder="Enter Value">
-					<input class="stylized_button"  onclick="Hydrometer()" type="submit" id="btn1" value="calculate">
+				<div style="background-color: transparent;padding: 0;margin-top: 5px;display: flex;gap: 2%;" >
+					<input style="width: 100%;" class="stylized_input" type="text" id="user_value" name="user_value" placeholder="Enter Value">
+					<input style="margin-left: 0;" class="stylized_button"  onclick="Hydrometer()" type="submit" id="btn1" value="calculate">
 				</div>
 			</div>
 
-			<div style="display: flex;justify-content: space-between;" >
-				<div style="padding: 0;" >
-					<p class="nice_font" style="margin: 0;margin-bottom: 5px;" >Bricks</p>
-					<p id='output1'></p>
-				</div>
-				<div style="padding: 0;" >
-					<p class="nice_font" style="margin: 0;margin-bottom: 5px;" >Potential %</p>
-					<p id='output2'></p>
-				</div>
-				<div style="padding: 0;" >
-					<p class="nice_font" style="margin: 0;margin-bottom: 5px;" >Spercific Gravity</p>
-					<p id='output3'></p>
+			<div style="padding: 20px;" >
+				<p class="nice_font" style="margin: 0;margin-bottom: 5px;" >Results</p>
+				<div style="  display: flex;
+				justify-content: space-between;
+				padding: 20px;
+				border: 1px solid #262c33;
+				border-radius: 4px;" >
+					<div style="padding: 0;" >
+						<p class="nice_font" style="margin: 0;margin-bottom: 5px;" >Bricks</p>
+						<p style="margin-bottom: 5px;" id='output1'></p>
+					</div>
+					<div style="padding: 0;" >
+						<p class="nice_font" style="margin: 0;margin-bottom: 5px;" >Potential %</p>
+						<p style="margin-bottom: 5px;" id='output2'></p>
+					</div>
+					<div style="padding: 0;" >
+						<p class="nice_font" style="margin: 0;margin-bottom: 5px;" >Spercific Gravity</p>
+						<p style="margin-bottom: 5px;" id='output3'></p>
+					</div>
 				</div>
 			</div>
 
 		</div>
 		</form>
-
-
-
-		
-
-
-		
-		<!----   xyz Section   ---->
-		<div>d</div>
-		
-		<!----   xyz Section   ---->
-		<div>e</div>
 		
 		<!----   Footer / end  Section   ---->
 		<div class="footer">
