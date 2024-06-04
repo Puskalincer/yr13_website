@@ -1,0 +1,76 @@
+body{
+    margin: 0;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: aquamarine;
+}
+
+h1{
+    margin: 0;
+}
+
+a{
+    all: unset;
+    cursor: pointer;
+}
+
+/*Temp bg*/
+.bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -10;
+}
+
+/*header stuffs*/
+header>div{
+    position: relative;
+    z-index: 4;
+    height: 100%;
+}
+
+header{
+    height: 75px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.blurry{
+    z-index: -1;
+    backdrop-filter: blur(15px);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+header a{
+    padding: 5px 10px;
+    height: fit-content;
+    margin-right: 10px;
+}
+
+header a.active{
+    border-left: 1px solid white;
+}
+
+header a:hover{
+    border-bottom: 1px solid white;
+}
+
+header h1{
+    margin: 0px 30px;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+}
+
+.header_butt{
+    height: 100%;
+    background: #00000057;
+    box-shadow: 4px 0px 5px 2px #00000057;
+}

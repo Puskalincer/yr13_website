@@ -11,9 +11,9 @@
 
 	<style>
 		body{
-			color: #fff;
 			font-family: 'Nunito Semibold';
 			text-align: center;
+			color: #747474;
 		}
 		
 		#content div{
@@ -118,8 +118,32 @@
 			opacity: 0.5;  
 		}
 
+		.calc_cont{
+			background-color: #9AC5F4;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0px 0px 4px 1px rgb(0 0 0 / 67%);
+			text-align: left;
+		}
+
+		.bg{
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: -10;
+        }
+
 		
 		@media (prefers-color-scheme: dark) {
+
+			.calc_cont{
+				background-color: #0E141B;
+			}
+
+
+
 			.stylized_button{
 				background: #4B619B;
 				box-shadow: 0px 0px 2px 1px rgb(90 90 90 / 67%);
@@ -262,6 +286,7 @@
 
 </head>
 <body>
+	<img class="bg" src="farm.jpeg" >
 
 	<div id="content">
 		<!----   Intro Section   ---->
@@ -275,9 +300,9 @@
 
 
 		<form onsubmit="return false">
-			<div class="container" style="padding: 20px;background-color: #0E141B;border-radius: 5px;box-shadow: 0px 0px 4px 1px rgb(0 0 0 / 67%);text-align: left;" >
+			<div class="container calc_cont" >
 				<div id="text_magic" >
-					<div style="display: flex;justify-content: space-between;align-items: center;padding: 0;background: #0E141B;position: relative;    z-index: 2;" >
+					<div style="display: flex;justify-content: space-between;align-items: center;padding: 0;position: relative;    z-index: 2;" >
 						<h1 style="margin: 0;" >Mixer Percetage</h1>
 						<div id="info_toggle" style="padding: 0;" >
 							<input type="checkbox">
@@ -359,9 +384,9 @@
 
 
 		<form onsubmit="return false">
-		<div class="container" style="padding: 20px;background-color: #0E141B;border-radius: 5px;box-shadow: 0px 0px 4px 1px rgb(0 0 0 / 67%);text-align: left;" >
+		<div class="container calc_cont" >
 			<div id="text_magic" >
-				<div style="display: flex;justify-content: space-between;align-items: center;padding: 0;background: #0E141B;position: relative;    z-index: 2;" >
+				<div style="display: flex;justify-content: space-between;align-items: center;padding: 0;position: relative;    z-index: 2;" >
 					<h1 style="margin: 0;" >Hydrometer</h1>
 					<div id="info_toggle" style="padding: 0;" >
 						<input type="checkbox">
