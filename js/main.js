@@ -1,4 +1,10 @@
 /* Function for converting the Hydrometer values */
+
+
+function rounder(x) {
+    return Number.parseFloat(x).toFixed(3);
+}
+
 function Hydrometer()
 {
     var inputValue1 = document.getElementById("user_value");
@@ -33,7 +39,7 @@ function Hydrometer()
     /*  Display the results  */
     /*.toFixed(2)   (for decimal place)*/
 
-    document.getElementById("output1").innerHTML = Math.round((brix_output + Number.EPSILON) * 100) / 100+'bx';
+    document.getElementById("output1").innerHTML = rounder(brix_output)+'bx';
     document.getElementById("output2").innerHTML = Math.round((percent_output + Number.EPSILON) * 100) / 100+'%';
     document.getElementById("output3").innerHTML = Math.round((sg_output + Number.EPSILON) * 100) / 100+' SG';
 }
