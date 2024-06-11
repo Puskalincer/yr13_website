@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>calculators</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="css/calc.css" >
+	<link rel="stylesheet" type="text/css" href="css/main.css" >
+	<script src="js/main.js"></script>
+
+
+
+
+    <style>
+        :root {
+        --primary-bg: #eee;
+        --primary-fg: #222;
+        --secondary-bg: #ddd;
+        --secondary-fg: #555;
+        --primary-btn-bg: #222;
+        --primary-btn-fg: #fff;
+        --secondary-btn-bg: #dd3134;
+        --secondary-btn-fg: #fff;
+        }
+        .dark-mode {
+        --primary-bg: #1e2129;
+        --primary-fg: #fff;
+        --secondary-bg: #1e2129;
+        --secondary-fg: #aaa;
+        --primary-btn-bg: #ddd;
+        --primary-btn-fg: #000;
+        --secondary-btn-bg: #780404;
+        --secondary-btn-fg: #ddd;
+        }
+
+
+
+
+
+
+        header .flex_organizer{
+            justify-content: space-between;
+        }
+
+        header .flex_organizer .l{
+            height: 100%;
+            background: #00000057;
+            box-shadow: 4px 0px 5px 2px #00000057;
+        }
+
+        header .flex_organizer .r{
+            padding-right: 20px;
+        }
+
+
+
+        button{
+            all: unset;
+            cursor: pointer;
+        }
+
+
+
+
+
+    </style>
+
+
+
+</head>
+<body>
+	<img class="bg" src="assets/farm.jpeg" >
+	<header>
+        <div class="flex_organizer flex" >
+            <div class="blurry" ></div>
+            <div class="l flex" >
+                <h1>Beer</h1>
+                <a href="" >Home</a>
+                <a class="active" href="" >Calculators</a>
+            </div>
+            <div class="r" >
+                <button id="dark-mode-toggle" onclick="change_color_status()">
+                    <img id="display_signifier" src="assets/hdr_auto.svg" >
+                </button>   
+            </div>
+        </div>
+    </header>
+
+
+
+
+
+
+</body>
+</html>
+<script>
+
+    display_signifier = document.getElementById("display_signifier");
+
+    current_signifier = 1;
+    signifiers = ["assets/hdr_auto.svg","assets/dark_mode.svg","assets/light_mode.svg"];
+
+    function change_color_status(){
+        if (current_signifier<signifiers.length){
+            display_signifier.src = signifiers[current_signifier]
+            current_signifier+=1 
+        }else{
+            current_signifier=0
+            change_color_status()
+        }
+    };
+
+
+
+
+
+
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) { console.log('changed!!');})
+
+    const darkModeToggleBtn = document.getElementById("dark-mode-toggle");
+    let theme = localStorage.getItem("theme");
+    if (theme === "dark") enableDarkMode();
+        darkModeToggleBtn.addEventListener("click", () => {
+        theme = localStorage.getItem("theme");
+        if (theme === "dark") {
+            enableLightMode();
+        } else {
+            enableDarkMode();
+        }
+    });
+
+    function enableDarkMode() {
+        darkModeToggleBtn.style.fill = "white";
+        localStorage.setItem("theme", "dark");
+        document.body.classList.add("dark-mode");
+    }
+
+    function enableLightMode() {
+        darkModeToggleBtn.style.fill = "#444";
+        localStorage.setItem("theme", "light");
+        document.body.classList.remove("dark-mode");
+    }
+
+    window.matchMedia("(prefers-color-scheme:dark)").addListener((e) => (e.matches ? enableDarkMode() : enableLightMode()));
+
+
+
+
+
+</script>
