@@ -134,6 +134,10 @@ body{
 
 @media (prefers-color-scheme: dark) {
 
+    header{
+        border-bottom: white solid 1px;
+    }
+
     .border_container{
         border: 1px solid #262c33;
     }

@@ -15,6 +15,11 @@
 
 
     <style>
+        body{
+            transition: all 0.5s;
+        }
+
+
         :root {
         --primary-bg: #eee;
         --primary-fg: #222;
@@ -64,7 +69,22 @@
 
 
 
+        /*that auto dark mode go brr*/
+        .bg{
+            transition : filter 500ms linear;
+            -webkit-transition : -webkit-filter 500ms linear;
+        }
 
+
+
+
+
+        .dark-mode .bg{
+            filter:brightness(0.5);
+        }
+
+        
+ 
 
     </style>
 
@@ -101,7 +121,7 @@
     display_signifier = document.getElementById("display_signifier");
 
     current_signifier = 1;
-    signifiers = ["assets/hdr_auto.svg","assets/dark_mode.svg","assets/light_mode.svg"];
+    signifiers = ["assets/dark_mode.svg","assets/light_mode.svg"];
 
     function change_color_status(){
         if (current_signifier<signifiers.length){
@@ -112,7 +132,6 @@
             change_color_status()
         }
     };
-
 
 
 
@@ -145,7 +164,11 @@
         document.body.classList.remove("dark-mode");
     }
 
-    window.matchMedia("(prefers-color-scheme:dark)").addListener((e) => (e.matches ? enableDarkMode() : enableLightMode()));
+    window.matchMedia("(prefers-color-scheme:dark)").addListener(
+        
+        (e) => (e.matches ? enableDarkMode() : enableLightMode())
+    
+    );
 
 
 
