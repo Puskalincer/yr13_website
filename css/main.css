@@ -55,9 +55,9 @@ header a{
 header a.active{
     border-left: 1px solid white;
     background-color: #ababab63;
-    -webkit-box-shadow: 10px 10px 5px 0px #ababab63;
-    -moz-box-shadow: 10px 10px 5px 0px #ababab63;
-    box-shadow: 2px 0px 5px 0px #ababab63;
+    -webkit-box-shadow: 1px 0px 5px 0px #abababad;
+    -moz-box-shadow: 1px 0px 5px 0px #abababad;
+    box-shadow: 1px 0px 5px 0px #abababad;
 }
 
 header a:hover{
