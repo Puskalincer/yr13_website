@@ -70,42 +70,10 @@
 				</div>
 	
 			</div>
-			</form>
+		</form>
 	
 
 		
-			
-
-		<!----   What Percentage is my Mixer   
-		<form onsubmit="return false">
-			<div class="nestedthree">
-				<div class="span3">
-					<h2>What Percentage is my Mixer</h2> Calculations to show what percentage your drink will be after adding spirit.<br>
-					select the percentage spirit, amount added and the cup size.<br> Please not this will not be 100% correct but will give a batter Idea.
-				</div>
-				<div>
-					<label for="abv">Spirit Percentage (ABV)</label><br>
-					<input type="text" id="abv" name="abv" value="Enter Value">
-				</div>
-				<div>
-					<label for="qty">Spirit ammount (mls)</label><br>
-					<input type="text" id="qty" name="qty" value="Enter Value">
-				</div>
-				<div>
-					<label for="glass">Drink / Glass size (mls)</label><br>
-					<input type="text" id="glass" name="glass" value="Enter Value">
-				</div>
-				<div class="span2">
-					<p   id='output'> </p>
-				</div>
-				<div>
-					<input  onclick="Mixer()" type="submit" id="btn1" value="calculate">
-				</div>
-			</div>
-
-		</form>
-		   xyz Section   ---->
-
 
 
 		<form onsubmit="return false">
@@ -168,6 +136,171 @@
 		</div>
 		</form>
 		
+
+
+
+
+
+
+		
+		<!----   Dilution Section   ---->
+		<form onsubmit="return false">
+			<div class="container calc_cont" >
+				<div id="text_magic" >
+					<div style="display: flex;justify-content: space-between;align-items: center;padding: 0;position: relative;    z-index: 2;" >
+						<h1 style="margin: 0;" >Dilution - Target Percentage</h1>
+						<div id="info_toggle" style="padding: 0;" >
+							<input type="checkbox">
+							<img class="arrow" style="position: relative;width: 35px;" src="assets/arrow_drop_down.svg" >
+						</div>
+					</div>
+					<div class="text_container" style="padding: 0;text-align: left;position: relative;" >
+						<p>explination here.</p>
+					</div>
+				</div>			
+				<div style="text-align: left;" >
+					<label class="nice_font" for="start_percentage">Starting Percentage</label>
+					<div style="background-color: transparent;padding: 0;margin-top: 5px;" >
+						<input style="width: 100%;" class="stylized_input" type="text" id="startpercentage" name="startpercentage" placeholder="Enter Start Percentage">
+					</div>
+				</div>
+				<div style="text-align: left;" >
+					<label class="nice_font" for="start_volume">Starting Volume</label>
+					<div style="background-color: transparent;padding: 0;margin-top: 5px;" >
+						<input style="width: 100%;" class="stylized_input" type="text" name="startvolume" id="startvolume" value="" placeholder="Enter Starting volume">
+					</div>
+				</div>
+				<div style="text-align: left;" >
+					<label class="nice_font" for="target_volume">Target Percentage</label>
+					<div style="background-color: transparent;padding: 0;margin-top: 5px;display: flex;gap: 2%;" >
+						<input style="width: 100%;" class="stylized_input" type="text" name="targetpercentage" id="targetpercentage" value="" placeholder="Enter Target Percentage">
+						<input style="margin-left: 0;" class="stylized_button"  onclick="Dilution()" type="submit" id="btn2" value="calculate">
+					</div>
+				</div>
+				<div style="padding: 20px;" >
+					<p class="nice_font" style="margin: 0;margin-bottom: 5px;" >Result</p>
+					<div class="border_container" >
+						<p style="margin: 0;"   id='output'> </p>
+					</div>
+				</div>
+			</div>
+		</form>
+
+
+
+
+
+
+
+
+
+		
+		
+		<!----   Dilution 2 Section   ---->
+		<form onsubmit="return false"> <!-- <<-- This will stop it redirecting the page, but able to run the code-->
+			<div class="nestedtwo">
+				<div class="span2">
+					<h2>Dilution - Target Volume</h2> explination here.
+				</div>
+				<div>
+					<label for="start_percentage">Enter Starting Percentage</label><br>
+					<input type="text" id="startpercentage2" name="startpercentage2" placeholder="Enter Start Percentage"><br>
+				</div>
+				<div>
+					<label for="target_percentage2">Enter Target Percentage</label><br>
+					<input type="text" name="targetpercentage2" id="targetpercentage2" value="" placeholder="Enter Target Percentage" checked><br>
+				</div>
+				<div class="span2">
+					<label for="target_volume">Enter Target Volume</label><br>
+					<input type="text" name="targetvolume2" id="targetvolume2" value="" placeholder="Enter Target volume (L)" checked><br>
+				</div>
+				
+				<div class="span2">
+					<input  onclick="Dilutiontwo()" type="submit" id="btn3" value="calculate">
+				</div>
+				<div>
+					<p id='wateranswer2'></p>
+				</div>
+				<div>
+					<p id='spiritanswer2'></p>
+				</div>
+				
+			</div>
+		</form>
+		
+		<!----   cocktail calculation   ---->
+		
+		
+		
+		
+		<form onsubmit="return false"> <!-- <<-- This will stop it redirecting the page, but able to run the code-->
+			<div class="nestedtwo">
+				<div class="span2">
+					<h2>Cocktail ABV Calculation</h2> explination here.
+				</div>
+				<div>
+					<label for="percentage_1">Enter Percentage of Spirit One </label><br>
+					<input type="text" id="percentage1" name="percentage1" placeholder="Percentage of spirit 1"><br>
+				</div>
+				<div>
+					<label for="volume_1">Enter Volume of Spirit One</label><br>
+					<input type="text" name="volume1" id="volume1" value="" placeholder="Volume of Spirit 1" checked><br>
+				</div>
+				<div>
+					<label for="percentage_2">Enter Percentage of Spirit Two </label><br>
+					<input type="text" id="percentage2" name="percentage2" placeholder="Percentage of spirit 2"><br>
+				</div>
+				<div>
+					<label for="volume_2">Enter Volume of Spirit Two</label><br>
+					<input type="text" name="volume2" id="volume2" value="" placeholder="Volume of Spirit 2" checked><br>
+				</div>
+				<div>
+					<label for="percentage_3">Enter Percentage of Spirit Three </label><br>
+					<input type="text" id="percentage3" name="percentage3" placeholder="Percentage of spirit 3"><br>
+				</div>
+				<div>
+					<label for="volume_3">Enter Volume of Spirit Three</label><br>
+					<input type="text" name="volume3" id="volume3" value="" placeholder="Volume of Spirit 3" checked><br>
+				</div>
+				
+				
+				
+				<div class="span2">
+					<label for="target_volume">Enter Cup Volume</label><br>
+					<input type="text" name="cupvolume" id="cupvolume" value="" placeholder="Enter Volume of Cup (Mls)" checked><br>
+				</div>
+				
+				<div class="span2">
+					<input  onclick="cocktailabv()()" type="submit" id="btn3" value="calculate">
+				</div>
+				<div class="span2">
+					<p id='totalspiritanswer'></p>
+				</div>
+				
+				
+			</div>
+		</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 	</div>
 

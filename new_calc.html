@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Brewing Calculations</title>
+	<style>
+		body{
+			color: #fff;
+			font-family: 'Nunito Semibold';
+			text-align: center;
+		}
+
+		#content div{
+			background: #3bbced;
+			padding: 20px;
+		}
+
+		#content div:nth-child(even){
+			background: #777;
+			padding: 20px;
+		}
+		
+		/* Mobile grid (1 cell wide) */
+		#content{
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-gap: 10px;
+			max-width: auto;
+			min-width: 200px;
+			margin: 0 auto;	
+		}
+		
+		/* Desktop grid (2 cells wide) */
+		@media screen and (min-width: 1000px){
+			#content{
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				grid-gap: 10px;
+				max-width: 1200px;
+				min-width: 800px;
+				margin: 0 auto;
+			}
+			.headder, .footer{
+			grid-column: span 2;
+			}
+		}
+		
+
+		/* Nested 3 is a nested grid 3 wide, for displaying things nicer  */
+		.nestedthree{
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-gap: 10px;
+		}
+		
+		/* Nested 2 is a nested grid 2 wide, for displaying things nicer  */
+		.nestedtwo{
+			display: grid;
+			grid-template-columns: repeat(2, 1fr);
+			grid-gap: 10px;
+		}
+		
+		/* easy way to merge 2 coloums together (for use with the nested option) */
+		.span2{
+			grid-column: span 2;
+		}
+
+		/* easy way to merge 3 coloums together (for use with the nested option) */
+		.span3{
+			grid-column: span 3;
+		}
+	</style>
+
+	<script>
+		/* Function for converting the Hydrometer values */
+		function Hydrometer()
+		{
+			var inputValue1 = document.getElementById("user_value");
+			const inputValue = inputValue1.value;
+
+			/* get the value from which radio button is checked */
+			var radios = document.getElementsByName('hydrometer_type');
+			for (var i = 0, length = radios.length; i < length; i++) 
+			{
+				if (radios[i].checked) 
+				{
+					var input_hydro_type = (radios[i].value);
+					break;
+				}
+			}
+			/* Depending on which input option, calculate the conversions  */
+			if (input_hydro_type == "bricks"){
+				brix_output = inputValue;
+				percent_output = inputValue/0.55;
+				sg_output = (inputValue * 0.004 ) + 1;
+
+			} else if (input_hydro_type == "percent"){
+				brix_output = inputValue*0.55;
+				percent_output = inputValue;
+				sg_output = (inputValue / 131.25 ) + 1;
+
+			}else if (input_hydro_type == "sg"){
+				brix_output = (inputValue - 1 ) / 0.004;
+				percent_output = (inputValue - 1 ) * 131.25;
+				sg_output = inputValue;
+			}
+			/*  Display the results  */
+			/*.toFixed(2)   (for decimal place)*/
+			document.getElementById("output1").innerHTML = brix_output+'bx';
+			document.getElementById("output2").innerHTML = percent_output+'%';
+			document.getElementById("output3").innerHTML = sg_output+' SG';
+		}
+
+		/* Function for approximating the percentage of your mixer */
+		function Mixer(){
+
+			var abv1 = document.getElementById("abv");
+			const abv = abv1.value;
+
+			var qty1 = document.getElementById("qty");
+			const qty = qty1.value;
+
+			var glass1 = document.getElementById("glass");
+			const glass = glass1.value;
+
+			var answer = ((abv*qty) /glass);
+
+			document.getElementById("output").innerHTML = 'Your drink will be '+answer+'%';
+
+		}
+		
+		function Dilution(){
+
+			var startpercentage1 = document.getElementById("startpercentage");
+			const startpercentage = Number(startpercentage1.value);
+
+			var startvolume1 = document.getElementById("startvolume");
+			const startvolume = Number(startvolume1.value);
+
+			var targetpercentage1 = document.getElementById("targetpercentage");
+			const targetpercentage = Number(targetpercentage1.value);
+
+			var wateranswer = (((startpercentage-targetpercentage)*startvolume)/ targetpercentage);
+			var volumeanswer = (startvolume + wateranswer);
+
+			document.getElementById("wateranswer").innerHTML = 'Water '+wateranswer+'L';
+			document.getElementById("volumeanswer").innerHTML = 'Total Volume '+volumeanswer+'L';
+		}
+		
+		function Dilutiontwo(){
+
+			var startpercentage1 = document.getElementById("startpercentage2");
+			const startpercentage2 = Number(startpercentage1.value);
+
+			var targetpercentage1 = document.getElementById("targetpercentage2");
+			const targetpercentage2 = Number(targetpercentage1.value);
+
+			var targetvolume1 = document.getElementById("targetvolume2");
+			const targetvolume2 = Number(targetvolume1.value);
+
+			var wateranswer2 = ((targetvolume2/startpercentage2)*(startpercentage2-targetpercentage2));
+			var spiritanswer2 = (targetvolume2 - wateranswer2);
+
+			document.getElementById("wateranswer2").innerHTML = 'Water '+wateranswer2+'L';
+			document.getElementById("spiritanswer2").innerHTML = 'Spirit to add '+spiritanswer2+'L';
+		}
+		
+		
+		function cocktailabv(){
+
+			var percentage1_temp = document.getElementById("percentage1");
+			const percentage1 = Number(percentage1_temp.value);
+
+			var volume1_temp = document.getElementById("volume1");
+			const volume1 = Number(volume1_temp.value);
+			
+			var percentage2_temp = document.getElementById("percentage2");
+			const percentage2 = Number(percentage2_temp.value);
+
+			var volume2_temp = document.getElementById("volume2");
+			const volume2 = Number(volume2_temp.value);
+			
+			var percentage3_temp = document.getElementById("percentage3");
+			const percentage3 = Number(percentage3_temp.value);
+
+			var volume3_temp = document.getElementById("volume3");
+			const volume3 = Number(volume3_temp.value);
+			
+			var cupvolume_temp = document.getElementById("cupvolume");
+			const cupvolume = Number(cupvolume_temp.value);
+	
+			var abvanswer1 = ((percentage1*volume1)/cupvolume);
+			var abvanswer2 = ((percentage2*volume2)/cupvolume);
+			var abvanswer3 = ((percentage3*volume3)/cupvolume);
+			var totalspiritanswer = (abvanswer1+abvanswer2+abvanswer3);
+
+			document.getElementById("totalspiritanswer").innerHTML = 'The Total ABV is '+totalspiritanswer+'% given the rest of the glass if full of 0% fluid';
+		}
+	</script>
+
+
+
+
+
+
+</head>
+<body>
+
+	<div id="content">
+		<!----   Intro Section   ---->
+		<div class="headder">
+			<h1>BREWING CALCULATIONS</h1>
+			Please find below some brewing calculations / conversions for your convieniance, use them at your own risk
+		</div>
+		
+		<!----   Hydrometer Section   ---->
+		<form onsubmit="return false"> <!-- <<-- This will stop it redirecting the page, but able to run the code-->
+			<div class="nestedthree">
+				<div class="span3">
+					<h2>Hydrometer</h2> Calculations to change between Bricks, Spercific Gravity and Potential percentage. 
+					select the value you have, enter your value and the results will display.
+				</div>
+				<div>
+					<input type="radio" name="hydrometer_type" id="bricks" value="bricks"><br>
+					<label for="bricks">Bricks</label><br>
+				</div>
+				<div>
+					<input type="radio" name="hydrometer_type" id="percent" value="percent" checked><br>
+					<label for="percent">(%) Potential Percentage</label><br>
+				</div>
+				<div>
+					<input type="radio" name="hydrometer_type" id="sg" value="sg"><br>
+					<label for="sg">(SG) Spercific Gravity</label> 
+				</div>
+				<div class="span3">
+					<input type="text" id="user_value" name="user_value" value="" placeholder="Enter Value">
+					<input  onclick="Hydrometer()" type="submit" id="btn1" value="calculate">
+				</div>
+				<div>
+					<p id='output1'></p>
+				</div>
+				<div>
+					<p id='output2'></p>
+				</div>
+				<div>
+					<p id='output3'></p>
+				</div>
+			</div>
+		</form>
+
+		<!----   What Percentage is my Mixer   ---->
+		<form onsubmit="return false"> <!-- <<-- This will stop it redirecting the page, but able to run the code-->
+			<div class="nestedthree">
+				<div class="span3">
+					<h2>What Percentage is my Mixer</h2> Calculations to show what percentage your drink will be after adding spirit.<br>
+					select the percentage spirit, amount added and the cup size.<br> Please not this will not be 100% correct but will give a batter Idea.
+				</div>
+				<div>
+					<label for="abv">Spirit Percentage (ABV)</label><br>
+					<input type="text" id="abv" name="abv" value="" placeholder="Enter ABV Percentage">
+				</div>
+				<div>
+					<label for="qty">Spirit ammount (mls)</label><br>
+					<input type="text" id="qty" name="qty" value="" placeholder="Enter Spirit quantity in Mils">
+				</div>
+				<div>
+					<label for="glass">Drink / Glass size (mls)</label><br>
+					<input type="text" id="glass" name="glass" value="" placeholder="Enter glass volume">
+				</div>
+				<div class="span2">
+					<p   id='output'> </p>
+				</div>
+				<div>
+					<input  onclick="Mixer()" type="submit" id="btn1" value="calculate">
+				</div>
+			</div>
+
+		</form>
+		
+		
+		
+		<!----   Dilution Section   ---->
+		<form onsubmit="return false"> <!-- <<-- This will stop it redirecting the page, but able to run the code-->
+			<div class="nestedtwo">
+				<div class="span2">
+					<h2>Dilution - Target Percentage</h2> explination here.
+				</div>
+				<div>
+					<label for="start_percentage">Enter Starting Percentage</label><br>
+					<input type="text" id="startpercentage" name="startpercentage" placeholder="Enter Start Percentage"><br>
+				</div>
+				<div>
+					<label for="start_volume">Enter Starting Volume</label><br>
+					<input type="text" name="startvolume" id="startvolume" value="" placeholder="Enter Starting volume" checked><br>
+				</div>
+				<div class="span2">
+					<label for="target_volume">Enter Target Percentage</label><br>
+					<input type="text" name="targetpercentage" id="targetpercentage" value="" placeholder="Enter Target Percentage" checked><br>
+				</div>
+				
+				<div class="span2">
+					<input  onclick="Dilution()" type="submit" id="btn2" value="calculate">
+				</div>
+				<div>
+					<p id='wateranswer'></p>
+				</div>
+				<div>
+					<p id='volumeanswer'></p>
+				</div>
+				
+			</div>
+		</form>
+		
+		
+		<!----   Dilution 2 Section   ---->
+		<form onsubmit="return false"> <!-- <<-- This will stop it redirecting the page, but able to run the code-->
+			<div class="nestedtwo">
+				<div class="span2">
+					<h2>Dilution - Target Volume</h2> explination here.
+				</div>
+				<div>
+					<label for="start_percentage">Enter Starting Percentage</label><br>
+					<input type="text" id="startpercentage2" name="startpercentage2" placeholder="Enter Start Percentage"><br>
+				</div>
+				<div>
+					<label for="target_percentage2">Enter Target Percentage</label><br>
+					<input type="text" name="targetpercentage2" id="targetpercentage2" value="" placeholder="Enter Target Percentage" checked><br>
+				</div>
+				<div class="span2">
+					<label for="target_volume">Enter Target Volume</label><br>
+					<input type="text" name="targetvolume2" id="targetvolume2" value="" placeholder="Enter Target volume (L)" checked><br>
+				</div>
+				
+				<div class="span2">
+					<input  onclick="Dilutiontwo()" type="submit" id="btn3" value="calculate">
+				</div>
+				<div>
+					<p id='wateranswer2'></p>
+				</div>
+				<div>
+					<p id='spiritanswer2'></p>
+				</div>
+				
+			</div>
+		</form>
+		
+		<!----   cocktail calculation   ---->
+		
+		
+		
+		
+		<form onsubmit="return false"> <!-- <<-- This will stop it redirecting the page, but able to run the code-->
+			<div class="nestedtwo">
+				<div class="span2">
+					<h2>Cocktail ABV Calculation</h2> explination here.
+				</div>
+				<div>
+					<label for="percentage_1">Enter Percentage of Spirit One </label><br>
+					<input type="text" id="percentage1" name="percentage1" placeholder="Percentage of spirit 1"><br>
+				</div>
+				<div>
+					<label for="volume_1">Enter Volume of Spirit One</label><br>
+					<input type="text" name="volume1" id="volume1" value="" placeholder="Volume of Spirit 1" checked><br>
+				</div>
+				<div>
+					<label for="percentage_2">Enter Percentage of Spirit Two </label><br>
+					<input type="text" id="percentage2" name="percentage2" placeholder="Percentage of spirit 2"><br>
+				</div>
+				<div>
+					<label for="volume_2">Enter Volume of Spirit Two</label><br>
+					<input type="text" name="volume2" id="volume2" value="" placeholder="Volume of Spirit 2" checked><br>
+				</div>
+				<div>
+					<label for="percentage_3">Enter Percentage of Spirit Three </label><br>
+					<input type="text" id="percentage3" name="percentage3" placeholder="Percentage of spirit 3"><br>
+				</div>
+				<div>
+					<label for="volume_3">Enter Volume of Spirit Three</label><br>
+					<input type="text" name="volume3" id="volume3" value="" placeholder="Volume of Spirit 3" checked><br>
+				</div>
+				
+				
+				
+				<div class="span2">
+					<label for="target_volume">Enter Cup Volume</label><br>
+					<input type="text" name="cupvolume" id="cupvolume" value="" placeholder="Enter Volume of Cup (Mls)" checked><br>
+				</div>
+				
+				<div class="span2">
+					<input  onclick="cocktailabv()()" type="submit" id="btn3" value="calculate">
+				</div>
+				<div class="span2">
+					<p id='totalspiritanswer'></p>
+				</div>
+				
+				
+			</div>
+		</form>
+		
+		<!----   Footer / end  Section   ---->
+		<div class="footer">
+			Please note that these calcualtions might not be 100% but are 
+			there to support the brewing craft. If you have suggestions for 
+			improvements please let the developer know
+		</div>
+	</div>
+</body>
+</html>
+
