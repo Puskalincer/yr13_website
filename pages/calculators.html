@@ -7,22 +7,35 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 
-	<link rel="stylesheet" type="text/css" href="css/calc.css" >
-	<link rel="stylesheet" type="text/css" href="css/main.css" >
-	<script src="js/main.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/calc.css" >
+	<link rel="stylesheet" type="text/css" href="../css/main.css" >
+	<script src="../js/main.js"></script>
 </head>
 <body>
-	<img class="bg" src="assets/farm.jpeg" >
+	<img class="bg" src="../assets/farm.jpeg" >
 	<header>
-        <div class="flex" >
-            <div class="blurry" ></div>
-            <div class="flex header_butt" >
-                <h1>Beer</h1>
-                <a href="" >Home</a>
+        <div class="flex_organizer flex_cntr" >
+            <div class="opaque_effect"></div>
+            <div class="l flex_cntr all_container_l" >
+                <div class="map_cont" >
+                    <h1>Beer</h1>
+                    <div class="bread_crumb_cont flex"  >
+                        <a href="" >Home</a> 
+                        <p>></p> 
+                        <a href="" > Calculators</a>
+                    </div>
+                </div>
+                <a href="/" >Home</a>
                 <a class="active" href="" >Calculators</a>
+            </div>
+            <div class="r" >
+                <button id="dark-mode-toggle" onclick="change_color_status()">
+                    <img id="display_signifier" src="../assets/history.svg" >
+                </button>   
             </div>
         </div>
     </header>
+
 
 	<div id="content" style="margin-top: 100px;">
 
@@ -35,7 +48,7 @@
 						<h1 style="margin: 0;" >Mixer Percetage</h1>
 						<div id="info_toggle" style="padding: 0;" >
 							<input type="checkbox">
-							<img class="arrow" style="position: relative;width: 35px;" src="assets/arrow_drop_down.svg" >
+							<img class="arrow" style="position: relative;width: 35px;" src="../assets/arrow_drop_down.svg" >
 						</div>
 					</div>
 					<div class="text_container" style="padding: 0;text-align: left;position: relative;" >
@@ -83,7 +96,7 @@
 					<h1 style="margin: 0;" >Hydrometer</h1>
 					<div id="info_toggle" style="padding: 0;" >
 						<input type="checkbox">
-						<img class="arrow" style="position: relative;width: 35px;" src="assets/arrow_drop_down.svg" >
+						<img class="arrow" style="position: relative;width: 35px;" src="../assets/arrow_drop_down.svg" >
 					</div>
 				</div>
 				<div class="text_container" style="padding: 0;text-align: left;position: relative;" >
@@ -151,7 +164,7 @@
 						<h1 style="margin: 0;" >Dilution - Target Percentage</h1>
 						<div id="info_toggle" style="padding: 0;" >
 							<input type="checkbox">
-							<img class="arrow" style="position: relative;width: 35px;" src="assets/arrow_drop_down.svg" >
+							<img class="arrow" style="position: relative;width: 35px;" src="../assets/arrow_drop_down.svg" >
 						</div>
 					</div>
 					<div class="text_container" style="padding: 0;text-align: left;position: relative;" >
@@ -180,7 +193,51 @@
 				<div style="padding: 20px;" >
 					<p class="nice_font" style="margin: 0;margin-bottom: 5px;" >Result</p>
 					<div class="border_container" >
-						<p style="margin: 0;"   id='output'> </p>
+						<p id='wateranswer'></p>
+						<p id='volumeanswer'></p>
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<form onsubmit="return false">
+			<div class="container calc_cont" >
+				<div id="text_magic" >
+					<div style="display: flex;justify-content: space-between;align-items: center;padding: 0;position: relative;    z-index: 2;" >
+						<h1 style="margin: 0;" >Dilution - Target Volume</h1>
+						<div id="info_toggle" style="padding: 0;" >
+							<input type="checkbox">
+							<img class="arrow" style="position: relative;width: 35px;" src="../assets/arrow_drop_down.svg" >
+						</div>
+					</div>
+					<div class="text_container" style="padding: 0;text-align: left;position: relative;" >
+						<p>explination here.</p>
+					</div>
+				</div>			
+				<div style="text-align: left;" >
+					<label class="nice_font" for="start_percentage">Enter Starting Percentage</label>
+					<div style="background-color: transparent;padding: 0;margin-top: 5px;" >
+						<input style="width: 100%;" class="stylized_input" type="text" id="startpercentage2" name="startpercentage2" placeholder="Enter Start Percentage">
+					</div>
+				</div>
+				<div style="text-align: left;" >
+					<label class="nice_font" for="start_volume">Enter Target Percentage</label>
+					<div style="background-color: transparent;padding: 0;margin-top: 5px;" >
+						<input style="width: 100%;" class="stylized_input" type="text" name="targetpercentage2" id="targetpercentage2" value="" placeholder="Enter Target Percentage">
+					</div>
+				</div>
+				<div style="text-align: left;" >
+					<label class="nice_font" for="target_volume">Enter Target Volume</label>
+					<div style="background-color: transparent;padding: 0;margin-top: 5px;display: flex;gap: 2%;" >
+						<input style="width: 100%;" class="stylized_input" type="text" name="targetvolume2" id="targetvolume2" value="" placeholder="Enter Target volume (L)">
+						<input style="margin-left: 0;" class="stylized_button" onclick="Dilutiontwo()" type="submit" id="btn3" value="calculate">
+					</div>
+				</div>
+				<div style="padding: 20px;" >
+					<p class="nice_font" style="margin: 0;margin-bottom: 5px;" >Result</p>
+					<div class="border_container" >
+						<p id='wateranswer2'></p>
+						<p id='spiritanswer2'></p>
 					</div>
 				</div>
 			</div>
@@ -191,47 +248,6 @@
 
 
 
-
-
-
-		
-		
-		<!----   Dilution 2 Section   ---->
-		<form onsubmit="return false"> <!-- <<-- This will stop it redirecting the page, but able to run the code-->
-			<div class="nestedtwo">
-				<div class="span2">
-					<h2>Dilution - Target Volume</h2> explination here.
-				</div>
-				<div>
-					<label for="start_percentage">Enter Starting Percentage</label><br>
-					<input type="text" id="startpercentage2" name="startpercentage2" placeholder="Enter Start Percentage"><br>
-				</div>
-				<div>
-					<label for="target_percentage2">Enter Target Percentage</label><br>
-					<input type="text" name="targetpercentage2" id="targetpercentage2" value="" placeholder="Enter Target Percentage" checked><br>
-				</div>
-				<div class="span2">
-					<label for="target_volume">Enter Target Volume</label><br>
-					<input type="text" name="targetvolume2" id="targetvolume2" value="" placeholder="Enter Target volume (L)" checked><br>
-				</div>
-				
-				<div class="span2">
-					<input  onclick="Dilutiontwo()" type="submit" id="btn3" value="calculate">
-				</div>
-				<div>
-					<p id='wateranswer2'></p>
-				</div>
-				<div>
-					<p id='spiritanswer2'></p>
-				</div>
-				
-			</div>
-		</form>
-		
-		<!----   cocktail calculation   ---->
-		
-		
-		
 		
 		<form onsubmit="return false"> <!-- <<-- This will stop it redirecting the page, but able to run the code-->
 			<div class="nestedtwo">
