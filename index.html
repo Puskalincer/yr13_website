@@ -53,7 +53,15 @@
         @media screen and (max-width: 700px){
             .flex_dir_responsive{
                 flex-direction: column;
+                margin: 0;
             }
+        }
+
+        .holder_of_all{
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
     </style>
@@ -67,22 +75,30 @@
                 <h1>Beer</h1>
                 <a class="active" href="" >Home</a>
                 <a href="pages/calculators.html" >Calculators</a>
-                <a href="" >Wiki</a>
-                <a href="" >Recipes</a>
+                <a href="pages/wiki.html" >Wiki</a>
+                <a href="pages/recipes.html" >Recipes</a>
             </div>
         </div>
     </header>
-    <div style="margin-top: 100px;" >
+    <div class="holder_of_all" >
 
 
 
         <div class="info_container flex_cntr flex_dir_responsive" >
             <div>
                 <h2>Brewing for the every man</h2>
-                <p>Brewing, the art of transforming humble ingredients into delightful beverages, has captivated humanity for millennia. From ancient civilizations to modern craft enthusiasts, brewing has evolved into a blend of science, tradition, and creativity. For the everyday person curious about this time-honored craft, brewing offers a rewarding journey into the world of flavors, aromas, and craftsmanship. Whether you're drawn to the rich history of beer, the intricate nuances of tea, or the invigorating process of coffee, brewing invites you to explore and experiment, transforming everyday ingredients into extraordinary experiences. This introduction aims to demystify brewing, offering insights and guidance to embark on your own brewing adventures, no matter your starting point or level of expertise.</p>
-                <p>This website exists to aid you in the process of brewing, Brewing <a href="">calculators</a> and a <a href="">wiki</a> of information are at your disposal.</p>
+                <a href="" >Brewing, the art of transforming humble ingredients into delightful beverages, has captivated humanity for millennia. From ancient civilizations to modern craft enthusiasts, brewing has evolved into a blend of science, tradition, and creativity. For the everyday person curious about this time-honored craft, brewing offers a rewarding journey into the world of flavors, aromas, and craftsmanship. Whether you're drawn to the rich history of beer, the intricate nuances of tea, or the invigorating process of coffee, brewing invites you to explore and experiment, transforming everyday ingredients into extraordinary experiences. This introduction aims to demystify brewing, offering insights and guidance to embark on your own brewing adventures, no matter your starting point or level of expertise.</a>
+                <a href="" >This website exists to aid you in the process of brewing, Brewing <a href="">calculators</a> and a <a href="">wiki</a> of information are at your disposal.</a>
             </div>
             <img style="height: 240px;border-radius: 5px;" src="assets/home_brew_kit.jpg" >
+        </div>
+
+        <div class="info_container  flex_dir_responsive" >
+            <a href="" >Featured</a>
+            <h2>Homemade Ginger Beer</h2>
+            <div>
+                <img style="height: 240px;border-radius: 5px;" src="assets/home_brew_kit.jpg" >
+            </div>
         </div>
 
         

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Wiki</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="../css/calc.css" >
+	<link rel="stylesheet" type="text/css" href="../css/main.css" >
+	<script src="../js/main.js"></script>
+    <style>
+        .color_shift{
+            background-color: #3cac4c;
+            box-shadow: 0px 0px 2px 1px rgb(255 255 255 / 67%);
+        }
+
+        .defalt_styling{
+            position: relative;
+            border-radius: 5px;
+        }
+
+        .wiki_sidebar{
+            text-align: left;
+            height: fit-content;
+        }
+
+        .wiki_sidebar_txt{
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wiki_sidebar_txt a{
+            margin: 0;
+            margin-bottom: 10px;
+            padding: 4px;
+            border-bottom: 1px solid transparent;
+        }
+           
+        .wiki_sidebar_txt a:hover{
+            border-bottom: 1px solid white;
+        }
+
+        .wiki_sidebar_txt a.active{
+            border-left: 1px solid white;
+            background-color: #ababab63;
+            -webkit-box-shadow: 1px 0px 5px 0px #abababad;
+            -moz-box-shadow: 1px 0px 5px 0px #abababad;
+            box-shadow: 1px 0px 5px 0px #abababad;
+        }
+
+
+
+
+
+
+
+        .wiki_sidebar .dropdown{
+            display: flex;
+            flex-direction: column;
+        }
+/*
+        .wiki_sidebar .dropdown:hover{
+            border-left: 1px solid white;
+        }
+*/
+        .wiki_sidebar .dropdown:hover button>img {
+            transform: rotate(0);
+        }
+
+        .wiki_sidebar .dropdown .dropdown_items{
+            display: flex;
+            flex-direction: column;
+            max-height: 0;
+            opacity: 1;
+            overflow: hidden;
+            transition: opacity 1.5s, max-height 1s;
+        }
+
+        .wiki_sidebar .dropdown:hover .dropdown_items{
+            max-height: 150px;
+            padding-right: 5px;
+        }
+
+
+
+
+        .wiki_sidebar_txt button{
+            margin: 0;
+            margin-bottom: 10px;
+            padding: 4px;
+            border-bottom: 1px solid transparent;
+
+            display: flex;
+            height: 18.5px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .wiki_sidebar_txt button>img{
+            height: 25px;
+            transition: transform 0.8s;
+            transform: rotate(-90deg);
+        }
+
+        .wiki_sidebar_txt button:hover{
+            border-bottom: 1px solid white;
+        }
+
+        .wiki_sidebar_txt div a{
+            margin: 0;
+            margin-bottom: 10px;
+            margin-left: 10px;
+            padding: 4px;
+            border-bottom: 1px solid transparent;
+        }
+
+
+
+
+
+
+
+
+        .wiki_sidebar .dropdown.active button>img {
+            transform: rotate(0);
+        }
+
+        .wiki_sidebar .dropdown.active .dropdown_items{
+            max-height: 150px;
+            padding-right: 5px;
+        }
+
+
+
+
+     
+
+
+
+        @media (prefers-color-scheme: dark) {
+            .color_shift{
+                background-color: #0E141B;
+            }
+
+            .edge_color{
+                border: white solid 1px;
+            }
+        }
+
+        .h_100{
+            height: 100%;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+	<img class="bg" src="../assets/farm.jpeg" >
+	<header>
+        <div class="flex_organizer flex_cntr" >
+            <div class="opaque_effect"></div>
+            <div class="l flex_cntr all_container_l" >
+                <div class="map_cont" >
+                    <h1>Beer</h1>
+                    <div class="bread_crumb_cont flex"  >
+                        <a href="" >Home</a> 
+                        <a href="" >></a> 
+                        <a href="" > Wiki</a>
+                    </div>
+                </div>
+                <a href="/" >Home</a>
+                <a href="calculators.html" >Calculators</a>
+                <a class="active" href="" >Wiki</a>
+                <a href="recipes.html" >Recipes</a>
+            </div>
+            <div class="r" >
+                <button id="dark-mode-toggle" onclick="change_color_status()">
+                    <img id="display_signifier" src="../assets/history.svg" >
+                </button>   
+            </div>
+        </div>
+    </header>
+
+    <!--box-shadow: 0px 0px 4px 1px rgb(0 0 0 / 67%)-->
+
+
+	<div style="margin-top: 100px;">
+        <div style="display: flex;gap: 20px;max-width: 2000px;margin: auto;margin: 0 50px;" >
+            <div class="defalt_styling wiki_sidebar edge_color" style="width: 300px;" >
+                <div class="opaque_effect"></div>
+                <div class="wiki_sidebar_txt" >
+                    <a href="wiki.html" class="active" >Home</a>
+                    <a href="" >Alcohol types</a>
+                    <div class="dropdown active" >
+                        <button>
+                            Sufgars
+                            <img src="../assets/arrow_drop_down.svg" >
+                        </button>
+                        <div class="dropdown_items" >
+                            <a class="active" href="" >Sugars</a>
+                            <a href="" >Sugars</a>
+                            <a href="" >Sugars</a>
+                        </div>
+                    </div>
+
+
+                    <a href="" >Sugars</a>
+                    <a href="" >Wash</a>
+                    <a href="" >Cuts</a>
+                    <a href="" >How to stop boiling over</a>
+                    <a href="" >Fusel Oils</a>
+                    <a href="" >Vinegar run</a>
+                    <a href="" >Sacraficial run</a>
+                    <a href="" >How to clean copper</a>
+                    <a href="" >Still information</a>
+                    <a href="" >Condenser</a>
+                    <a href="" >Distillation types</a>
+                    <a href="" >Yeasts</a>
+                    <a href="" >PH</a>
+                    <a href="" >Hydrometer</a>
+                    <a href="" >Alcometer</a>
+                    <a href="" >Decant / Syphon / racking</a>
+                    <a href="" >Sediment</a>
+                    <a href="" >Bubbler / airlock</a>
+                    <a href="" >Common Bottle info</a>
+                    <a href="" >Conversions</a>
+                    <a href="" >Notes</a>
+                    <a href="" >Acronyms</a>
+                </div>
+            </div>
+            <div class="color_shift defalt_styling edge_color" style="width: 100%;height: 1200px;" >
+                <h1>
+                    
+                </h1>
+
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+	</div>
+
+
+</body>
+</html>
